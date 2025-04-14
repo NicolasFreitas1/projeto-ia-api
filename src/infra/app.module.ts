@@ -5,6 +5,7 @@ import { EnvModule } from './env/env.module'
 import { EnvService } from './env/env.service'
 import { RequestLoggerMiddleware } from './http/middlewares/request-logger-middleware'
 import { AuthModule } from './auth/auth.module'
+import { RestaurantModule } from './http/controllers/restaurant/restaurant.module'
 
 @Module({
   imports: [
@@ -14,6 +15,7 @@ import { AuthModule } from './auth/auth.module'
       isGlobal: true,
     }),
     AuthModule,
+    RestaurantModule,
   ],
   controllers: [],
   providers: [EnvService],
