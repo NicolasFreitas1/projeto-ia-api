@@ -4,6 +4,7 @@ import { envSchema } from './env/env'
 import { EnvModule } from './env/env.module'
 import { EnvService } from './env/env.service'
 import { RequestLoggerMiddleware } from './http/middlewares/request-logger-middleware'
+import { AuthModule } from './auth/auth.module'
 
 @Module({
   imports: [
@@ -12,6 +13,7 @@ import { RequestLoggerMiddleware } from './http/middlewares/request-logger-middl
       validate: (env) => envSchema.parse(env),
       isGlobal: true,
     }),
+    AuthModule,
   ],
   controllers: [],
   providers: [EnvService],
