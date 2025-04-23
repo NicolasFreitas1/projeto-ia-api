@@ -18,7 +18,7 @@ enum OrderStatus {
 model User {
   id           String   @id @default(uuid()) @map("id_user") @db.Uuid
   name         String   @map("nm_user") @db.VarChar(250)
-  login        String   @unique @map("nm_login") @db.VarChar(150)
+  email        String   @unique @map("ds_email") @db.VarChar(150)
   password     String   @map("vl_password") @db.VarChar(250)
   isAdmin      Boolean  @default(false) @map("bl_is_admin")
   restaurantId String   @map("id_restaurant") @db.Uuid

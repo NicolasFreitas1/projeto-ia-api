@@ -6,11 +6,11 @@ export class PrismaUserMapper {
   static toDomain(raw: PrismaUser): User {
     return User.create(
       {
-        email: raw.login,
-        name,
-        password,
-        restaurantId,
-        isAdmin,
+        email: raw.email,
+        name: raw.name,
+        password: raw.password,
+        restaurantId: new UniqueEntityId(raw.restaurantId),
+        isAdmin: raw.isAdmin,
         createdAt: raw.createdAt,
         updatedAt: raw.updatedAt,
       },
@@ -21,12 +21,11 @@ export class PrismaUserMapper {
   static toPrisma(user: User): Prisma.UserUncheckedCreateInput {
     return {
       id: user.id.toString(),
-      cep: user.cep,
-      city: user.city,
-      country: user.country,
-      number: user.number,
-      state: user.state,
-      street: user.street,
+      email: user.email,
+      name: user.name,
+      password: user.password,
+      restaurantId: user.restaurantId.toString(),
+      isAdmin: user.isAdmin,
       createdAt: user.createdAt,
       updatedAt: user.updatedAt ? new Date(user.updatedAt) : undefined,
     }
