@@ -34,7 +34,7 @@ model Address {
   id        String   @id @default(uuid()) @map("id_address") @db.Uuid
   cep       String   @map("vl_cep") @db.VarChar(15)
   street    String   @map("ds_street") @db.VarChar(250)
-  number    String   @map("vl_number") @db.VarChar(10)
+  number    String?  @map("vl_number") @db.VarChar(10)
   city      String   @map("nm_city") @db.VarChar(100)
   state     String   @map("nm_state") @db.VarChar(100)
   country   String   @map("nm_country") @db.VarChar(100)
