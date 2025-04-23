@@ -75,13 +75,15 @@ model Costumer {
 
 model Order {
   id           String      @id @default(uuid()) @map("id_order") @db.Uuid
-  costumerId   String      @map("id_costumer") @db.Uuid
+  tableNumber  Int?        @map("vl_table_number")
+  observations String?     @map("ds_observations") @db.Text
+  costumerId   String?     @map("id_costumer") @db.Uuid
   restaurantId String      @map("id_restaurant") @db.Uuid
   status       OrderStatus @default(PENDING) @map("vl_status")
   createdAt    DateTime    @default(now()) @map("dt_created")
   updatedAt    DateTime    @updatedAt @map("dt_updated")
 
-  costumer   Costumer    @relation(fields: [costumerId], references: [id])
+  costumer   Costumer?   @relation(fields: [costumerId], references: [id])
   restaurant Restaurant  @relation(fields: [restaurantId], references: [id])
   itens      OrderItem[]
 
